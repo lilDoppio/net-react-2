@@ -26,7 +26,6 @@ const LegalForm = () => {
         const error = isFieldsValid()
         if (error.status) {
             setErrorMessage(error.message)
-            console.log('ERROR', error.status, error.message)
         } else {
             setIsLoading(true)
             const isOver = await postOrganizationRequest(e.target, 'legal')

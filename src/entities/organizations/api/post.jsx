@@ -2,7 +2,6 @@ export const postOrganizationRequest = async (form, type) => {
     const formData = new FormData(form);
     formData.append('type', type)
 
-    console.log('formData', ...formData);
 
     try {
         let url
@@ -21,7 +20,6 @@ export const postOrganizationRequest = async (form, type) => {
             }
         });
 
-        console.log('response', response);
         return response
     } catch (error) {
         console.error('Error:', error);

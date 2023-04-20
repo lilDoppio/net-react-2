@@ -6,7 +6,6 @@ export const useIndexPageStore = create(subscribeWithSelector((set, get) => ({
     isOrganizationFormComplite: false,
     rootInn: null,
     setStoreValue: (value, type) => {
-        console.log('storeProp', value, type)
         switch (type) {
             case 'organizationType':
                 set({ organizationType: value })

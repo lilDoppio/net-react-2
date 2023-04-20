@@ -12,7 +12,6 @@ const FileInput = ({ storeProp, store }) => {
     const onRemove = (e) => {
         e.preventDefault()
         e.stopPropagation()
-        console.log('On REANOVE')
         ref.current.children[0].value = null
         setFile({name: ''})
         setStoreValue(null, storeProp)
@@ -22,7 +21,6 @@ const FileInput = ({ storeProp, store }) => {
         if (dragActive) {
             try {
                 setFile(e.dataTransfer.files[0])
-                console.log('storeProp', storeProp)
                 setStoreValue(e.dataTransfer.files[0], storeProp)
             } catch {}
         } else {
@@ -42,10 +40,8 @@ const FileInput = ({ storeProp, store }) => {
         e.preventDefault();
         e.stopPropagation();
         if (e.type === "dragenter" || e.type === "dragover") {
-            console.log('setDragActive true')
             setDragActive(true);
         } else if (e.type === "dragleave") {
-            console.log('setDragActive false')
             setDragActive(false);
         }
     };

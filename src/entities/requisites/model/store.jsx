@@ -14,7 +14,6 @@ export const useRequisitesStore = create(subscribeWithSelector((set, get) => ({
     correspondentAccount: null,
     requisitesCount: 0,
     setStoreValue: (value, type) => {
-        console.log('storeProp', value, type)
         switch (type) {
             case 'bic':
                 set({ bic: value })
@@ -59,14 +58,6 @@ export const useRequisitesStore = create(subscribeWithSelector((set, get) => ({
             correspondentAccount: null,
             requisitesCount: state.requisitesCount + 1,
         }))
-        
-        console.log(
-            get().requisites,
-            get().bic,
-            get().bankName,
-            get().paymentAccount,
-            get().correspondentAccount,
-        )
 
         return { status: false }
     },
@@ -75,7 +66,6 @@ export const useRequisitesStore = create(subscribeWithSelector((set, get) => ({
             status: false,
             message: ''
         }
-        console.log(Object.values(get()))
         if (Object.values(get()).some(elm => elm === null)) {
             error.status = true
             error.message = `Все поля должны быть заполнены!`
@@ -115,7 +105,6 @@ export const useRequisitesStore = create(subscribeWithSelector((set, get) => ({
         }
         const response = await fetch(url, options)
         let data = await response.json()
-        console.log('data', {query: query}, data)
         
         if (storeProp === 'bankName') {
             set({ bankName: data.suggestions[0].value })
@@ -123,12 +112,5 @@ export const useRequisitesStore = create(subscribeWithSelector((set, get) => ({
         if (storeProp === 'correspondentAccount') {
             set({ correspondentAccount: data.suggestions[0].data.correspondent_account })
         }
-
-        console.log(
-            get().bic,
-            get().bankName,
-            get().paymentAccount,
-            get().correspondentAccount,
-        )
     },   
 })))

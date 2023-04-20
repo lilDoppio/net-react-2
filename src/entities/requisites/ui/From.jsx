@@ -26,10 +26,8 @@ const RequisitesForm = ({ isUpdate, onClick }) => {
         const error = isFieldsValid()
         if (error.status) {
             setErrorMessage(error.message)
-            console.log('ERROR', error.status, error.message)
         } else if (onAddRequisites()) {
             setIsLoading(true)
-            console.log('POST requisites', getRequisites())
             const isOver = await postRequisitesRequest(getRequisites(), rootInn)
             if (isOver) {
                 setIsLoading(false)
@@ -41,7 +39,6 @@ const RequisitesForm = ({ isUpdate, onClick }) => {
         const error = addRequisites()
         if (error.status) {
             setErrorMessage(error.message)
-            console.log('ERROR', error.status, error.message)
 
             return false
         } else {

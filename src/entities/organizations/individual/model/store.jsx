@@ -13,7 +13,6 @@ export const useIndividualStore = create(subscribeWithSelector((set, get) => ({
     officeRentSkan: false,
     isOfficeRentSkanOff: true,
     setStoreValue: (value, type) => {
-        console.log('storeProp', value, type)
         switch (type) {
             case 'registrationDate':
                 set({ registrationDate: value })
@@ -56,11 +55,9 @@ export const useIndividualStore = create(subscribeWithSelector((set, get) => ({
             status: false,
             message: ''
         }
-        console.log(Object.values(get()))
         if (Object.values(get()).some(elm => elm === null)) {
             error.status = true
             error.message = `Все поля должны быть заполнены!`
-            console.log('что-то null', error)
             return error
         }
 
@@ -77,10 +74,6 @@ export const useIndividualStore = create(subscribeWithSelector((set, get) => ({
                 }
             }
         }) 
-
-        // if (!error.status) {
-        //     get().postOrganization()
-        // }
 
         return error
     }

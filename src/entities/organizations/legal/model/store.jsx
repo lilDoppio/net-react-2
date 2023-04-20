@@ -15,7 +15,6 @@ export const useLegalStore = create(subscribeWithSelector((set, get) => ({
     officeRentSkan: false,
     isOfficeRentSkanOff: true,
     setStoreValue: (value, type) => {
-        console.log('storeProp', value, type)
         switch (type) {
             case 'fullname':
                 set({ fullname: value })
@@ -67,11 +66,9 @@ export const useLegalStore = create(subscribeWithSelector((set, get) => ({
             status: false,
             message: ''
         }
-        console.log(Object.values(get()))
         if (Object.values(get()).some(elm => elm === null)) {
             error.status = true
             error.message = `Все поля должны быть заполнены!`
-            console.log('что-то null', error)
             return error
         }
 
@@ -113,7 +110,6 @@ export const useLegalStore = create(subscribeWithSelector((set, get) => ({
         }
         const response = await fetch(url, options)
         let data = await response.json()
-        console.log('data', data)
 
         let date = '';
         if (data.suggestions[0].data.state.registration_date) {
@@ -131,12 +127,5 @@ export const useLegalStore = create(subscribeWithSelector((set, get) => ({
             registrationDate: date,
             ogrn: data.suggestions[0].data.ogrn
         })
-
-        console.log(
-            get().fullname,
-            get().shortname,
-            get().registrationDate,
-            get().ogrn,
-        )
     },
 })))

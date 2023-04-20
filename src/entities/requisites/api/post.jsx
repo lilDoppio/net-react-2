@@ -1,6 +1,4 @@
 export const postRequisitesRequest = async (requisites, inn) => {
-    console.log('formData', requisites);
-
     try {
         const url = `https://localhost:7083/api/requisites/${inn}`
 
@@ -13,7 +11,6 @@ export const postRequisitesRequest = async (requisites, inn) => {
             }
         });
 
-        console.log('response', response);
         return response
     } catch (error) {
         console.error('Error:', error);
