@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <form action="/" enctype="multipart/form-data" onsubmit="return false;" method="post">
+        <dl>
+            <dt>
+                <label for="FileUpload_FormFile">File</label>
+            </dt>
+            <dd>
+                <input id="FileUpload_FormFile" type="file" name="files" />
+            </dd>
+        </dl>
+
+        <input name="simple" />
+
+        <input class="btn" type="submit" value="Upload" />
+
+        <div>
+            <output name="result"></output>
+        </div>
+    </form>
     </div>
   );
 }
